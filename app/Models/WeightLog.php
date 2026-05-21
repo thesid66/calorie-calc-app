@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WeightLog extends Model
 {
+    protected $table = 'weight_logs';
+
     protected $fillable = [
         'user_id',
         'logged_on',

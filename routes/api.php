@@ -2,8 +2,13 @@
 
 use App\Http\Controllers\Api\ActivityLevelController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DiaryController;
+use App\Http\Controllers\Api\FoodController;
+use App\Http\Controllers\Api\MealEntryController;
 use App\Http\Controllers\Api\NutritionGoalController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProgressController;
+use App\Http\Controllers\Api\WeightLogController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
@@ -33,5 +38,26 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/nutrition-goal', [NutritionGoalController::class, 'show']);
         Route::post('/nutrition-goal', [NutritionGoalController::class, 'store']);
+
+        Route::get('/foods', [FoodController::class, 'index']);
+        Route::post('/foods/custom', [FoodController::class, 'storeCustom']);
+        Route::get('/foods/{food}', [FoodController::class, 'show']);
+
+        Route::get('/diary', [DiaryController::class, 'show']);
+
+        Route::post('/meal-entries', [MealEntryController::class, 'store']);
+        Route::get('/meal-entries/{mealEntry}', [MealEntryController::class, 'show']);
+        Route::put('/meal-entries/{mealEntry}', [MealEntryController::class, 'update']);
+        Route::delete('/meal-entries/{mealEntry}', [MealEntryController::class, 'destroy']);
+
+        Route::get('/weight-logs', [WeightLogController::class, 'index']);
+        Route::post('/weight-logs', [WeightLogController::class, 'store']);
+        Route::get('/weight-logs/{weightLog}', [WeightLogController::class, 'show']);
+        Route::put('/weight-logs/{weightLog}', [WeightLogController::class, 'update']);
+        Route::delete('/weight-logs/{weightLog}', [WeightLogController::class, 'destroy']);
+
+        Route::get('/progress/overview', [ProgressController::class, 'overview']);
+        Route::get('/progress/weight', [ProgressController::class, 'weight']);
+        Route::get('/progress/nutrition', [ProgressController::class, 'nutrition']);
     });
 });
