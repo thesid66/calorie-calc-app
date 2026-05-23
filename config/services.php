@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'open_food_facts' => [
+        'base_url' => env('OPEN_FOOD_FACTS_BASE_URL', 'https://world.openfoodfacts.org'),
+        'user_agent' => env('OPEN_FOOD_FACTS_USER_AGENT', 'CalorieCalcApp/0.1'),
+        'cache_days' => (int) env('OPEN_FOOD_FACTS_CACHE_DAYS', 30),
+    ],
+
 ];

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ActivityLevelController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BarcodeController;
 use App\Http\Controllers\Api\DiaryController;
 use App\Http\Controllers\Api\FoodController;
 use App\Http\Controllers\Api\MealEntryController;
@@ -59,5 +60,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/progress/overview', [ProgressController::class, 'overview']);
         Route::get('/progress/weight', [ProgressController::class, 'weight']);
         Route::get('/progress/nutrition', [ProgressController::class, 'nutrition']);
+
+        Route::get('/barcodes/{barcode}', [BarcodeController::class, 'show']);
+        Route::post('/barcodes/{barcode}/save-as-food', [BarcodeController::class, 'saveAsFood']);
     });
 });
